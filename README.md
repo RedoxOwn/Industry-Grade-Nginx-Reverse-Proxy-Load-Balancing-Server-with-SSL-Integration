@@ -13,7 +13,7 @@ sudo apt-get install nginx
 
 ### Step 2 – Adjust the Network Firewall if necessary.
 
-### Step 3 – At the end of the installation process, Debian 10 starts Nginx. The web server should already be up and running.
+### Step 3 – At the end of the installation process, Debian starts Nginx. The web server should already be up and running.
 
 ```
 systemctl status nginx
