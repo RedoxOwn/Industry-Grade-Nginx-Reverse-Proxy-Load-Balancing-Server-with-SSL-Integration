@@ -56,38 +56,55 @@ sudo systemctl enable nginx
 ```
 
 ### Step 5 - Create the SSL certificate directory and switch to it.
+```
 mkdir -p /etc/nginx/ssl/example.com
 cd /etc/nginx/ssl/example.com
+```
 
 ### Step 6 - Create a private key:
+```
 openssl genrsa -des3 -out server.key 2048
+```
 
 ### Step 7 - Then Remove its passphrase:
+```
 openssl rsa -in server.key -out server.key
+```
 
 ### Step 8 - Create a CSR (Certificate Signing Request):
+```
 openssl req -new -key server.key -out server.csr
+```
 
 ### Step 9 - Use this CSR(server.csr file) to obtain a valid certificate from a certificate authority(Example: NO-IP, Namecheap etc).
+```
 -> After you buy an SSL certificate from NO-IP, you then upload the CSR(server.csr file) to them and request a valid certificate.
 -> You will then wait for them to verify your request and then they will notify you par email. (Take about 30 minutes to 24 hours depending on the certificate authority)
 -> Once your Certificate is approved, you then go back their plathform and download the 'PEM Chain' file and the 'CRT Package' zip that contains individual root, intermediate, and end-entity certificate files.
 -> After you are done, you will have a .pem file and a zip usually containing three .crt files.
+```
 
 ### Step 10 - Paste the content of the .pem file(PEM Chain) into a file named 'ca-certs.pem'
+```
 touch ca-certs.pem
 nano ca-certs.pem
+```
 Paste text inside and then save.
 
 ### Step 11 - You have to merge all the .crt files in the 'CRT Package' zip into a single .crt file named 'server.crt' with a specific order.
-Order:
+```
 touch server.crt
 nano server.crt
+```
+Order:
+```
 1. Paste the text inside the .crt file that start with the hostname, for exemple: example_com.crt
 2. Paste the text inside the .crt file of the root, for exemple: TrustedRoot.crt
 3. Paste the text inside the .crt file of the certificate authority, for exemple: DigiCertCA.crt
 4. Save.
+```
 After you finish the server.crt should look something like this:
+```
 -----BEGIN CERTIFICATE-----
 PASTE 1 TEXT HERE
 -----END CERTIFICATE-----
@@ -97,6 +114,6 @@ PASTE 2 TEXT HERE
 -----BEGIN CERTIFICATE-----
 PASTE 3 TEXT HERE
 -----END CERTIFICATE-----
-
+```
 
 ### Step 12 - 
