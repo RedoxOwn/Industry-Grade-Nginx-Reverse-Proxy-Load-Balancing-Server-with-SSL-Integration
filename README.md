@@ -68,5 +68,24 @@ touch ca-certs.pem
 nano ca-certs.pem
 Paste text inside and then save.
 
-Step 11 - You have to merge all the .crt files in the 'CRT Package' zip into a single .crt file named 'server.crt'
+Step 11 - You have to merge all the .crt files in the 'CRT Package' zip into a single .crt file named 'server.crt' with a specific order.
+Order:
+touch server.crt
+nano server.crt
+1. Paste the text inside the .crt file that start with the hostname, for exemple: example_com.crt
+2. Paste the text inside the .crt file of the root, for exemple: TrustedRoot.crt
+3. Paste the text inside the .crt file of the certificate authority, for exemple: DigiCertCA.crt
+4. Save.
+After you finish the server.crt should look something like this:
+-----BEGIN CERTIFICATE-----
+PASTE 1 TEXT HERE
+-----END CERTIFICATE-----
+-----BEGIN CERTIFICATE-----
+PASTE 2 TEXT HERE
+-----END CERTIFICATE-----
+-----BEGIN CERTIFICATE-----
+PASTE 3 TEXT HERE
+-----END CERTIFICATE-----
 
+
+Step 12 - 
