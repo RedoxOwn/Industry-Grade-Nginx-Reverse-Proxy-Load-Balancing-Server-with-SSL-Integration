@@ -116,4 +116,12 @@ PASTE 3 TEXT HERE
 -----END CERTIFICATE-----
 ```
 
-### Step 12 - 
+### Step 12 - Make sure you have these files in /etc/nginx/ssl/example.com
+```
+ls
+```
+Output
+```
+ca-certs.pem  server.crt  server.csr  server.key
+```
+* if you don't have all these 4 files there, then you have to repeat the previous steps again.
