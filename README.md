@@ -324,4 +324,4 @@ Now all that's left is to configure your router to expose ports 80 and 443 to th
 
 Well done! Provided you have completed all the preceding instructions I outlined in this documentation, you now possess a robust, industry-grade nginx reverse-proxy load-balancing server with optimal SSL integration.
 
-## Please feel free to contact me at redouane.el.ouadi.official@gmail.com if you have any questions.
+## Feel free to contact me at redouane.el.ouadi.official@gmail.com if you have any questions.
