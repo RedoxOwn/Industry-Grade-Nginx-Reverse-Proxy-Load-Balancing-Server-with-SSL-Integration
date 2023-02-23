@@ -2,8 +2,10 @@
 This is a documentation showing how to install and deploy a industry-level nginx reverse-proxy load-balancing server with best SSL integration.
 
 ### Step 1 – First, install nginx:
+```
 sudo apt-get update
 sudo apt-get install nginx
+```
 
 ### Step 2 – Adjust the Network Firewall if necessary.
 
@@ -29,22 +31,29 @@ This output reveals that the service has started successfully.
 ### Step 4 – Now that you have your web server up and running, you can review some basic management commands.
 
 To stop your web server, type:
+```
 sudo systemctl stop nginx
-
+```
 To start the web server when it is stopped, type:
+```
 sudo systemctl start nginx
-
+```
 To stop and then start the service again, type:
+```
 sudo systemctl restart nginx
-
+```
 If you are making configuration changes, Nginx can often reload without dropping connections. To do this, type:
+```
 sudo systemctl reload nginx
-
+```
 By default, Nginx is configured to start automatically when the server boots. If this is not what you want, you can disable this behavior by typing:
+```
 sudo systemctl disable nginx
-
+```
 To re-enable the service to start up at boot, you can type:
+```
 sudo systemctl enable nginx
+```
 
 ### Step 5 - Create the SSL certificate directory and switch to it.
 mkdir -p /etc/nginx/ssl/example.com
