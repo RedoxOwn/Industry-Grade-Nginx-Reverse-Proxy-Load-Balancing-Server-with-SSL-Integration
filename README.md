@@ -118,7 +118,7 @@ PASTE 3 TEXT HERE
 
 ### Step 12 - Make sure you have these files in /etc/nginx/ssl/example.com
 ```
-ls
+ls /etc/nginx/ssl/irondev.dnsfor.me
 ```
 Output
 ```
