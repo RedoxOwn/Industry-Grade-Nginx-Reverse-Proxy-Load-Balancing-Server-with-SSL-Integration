@@ -240,8 +240,8 @@ server {
 }
 ```
 
-The configuration above will make the reverse proxy server listen on both the ports 80 and 443 of the domains example.com and www.example.com
-If the USER used HTTP protocol by coming through port 80 then the server will forward the request to port 443 to force SSL and the use HTTPS protocol.
+- The configuration above will make the reverse proxy server listen on both the ports 80 and 443 of the domains example.com and www.example.com
+- If the USER used HTTP protocol by coming through port 80 then the server will forward the request to port 443 to force SSL and the use HTTPS protocol.
 
 Like this:
 
