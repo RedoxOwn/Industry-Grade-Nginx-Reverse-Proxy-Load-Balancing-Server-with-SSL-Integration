@@ -6,10 +6,11 @@ This documentation provides instructions on how to install and deploy an industr
 
 ![alt text](https://raw.githubusercontent.com/RedoxOwn/Industry-Grade-Nginx-Reverse-Proxy-Load-Balancing-Server-with-SSL-Integration/main/benchmark.png)
 
-### Step 1 – First, install nginx:
+### Step 1 – First, install openssl and nginx:
 
 ```
 sudo apt-get update
+sudo apt-get install openssl
 sudo apt-get install nginx
 ```
 
