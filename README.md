@@ -2,6 +2,8 @@
 
 This is a documentation showing how to install and deploy a industry-level nginx reverse-proxy load-balancing server with best SSL integration.
 
+#### This method was tested in Debian 11.
+
 ### Step 1 – First, install nginx:
 
 ```
@@ -185,6 +187,8 @@ Paste this inside it:
 ```
 upstream example_com {
     server localhost:8080;
+    #server localhost:8081;
+    #server localhost:8082;
 }
 
 server {
@@ -223,3 +227,99 @@ server {
     return 301 https://$server_name$request_uri;
 }
 ```
+
+The configuration above will make the reverse proxy server listen on both the ports 80 and 443 of the domains example.com and www.example.com
+If the USER used HTTP protocol by coming through port 80 then the server will forward the request to port 443 to force SSL and the use HTTPS protocol.
+
+Like this:
+
+```
+http://example.com ==> https://example.com
+http://www.example.com ==> https://www.example.com
+```
+
+Then it will transfer the request to the local HTTP server (localhost:8080) as seen bellow:
+
+```
+upstream example_com {
+    server localhost:8080;
+```
+
+You can change that line to match whatever environment and situation you have in your machine.
+
+#### The proxy_set_header directive is used to pass vital information about the request to the upstream servers.
+
+### Step 14 - Save the file and create a symbolic link to the sites-enabled directory.
+
+```
+ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/example.com
+
+```
+
+### Step 15 - Delete the default symbolic link in the sites-enabled directory.
+
+```
+rm /etc/nginx/sites-enabled/default
+
+```
+
+### Step 16 - Perform a configuration test to check for errors.
+
+```
+/usr/sbin/nginx -t
+```
+
+Output
+
+```
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+```
+
+This output reveals that the configuration syntax is correct and that test ended successfully.
+
+### Step 17 - If no errors are displayed, restart the nginx service.
+
+```
+systemctl restart nginx
+```
+
+### Step 18 - Check if the Nginx server was started without any errors.
+
+```
+systemctl status nginx
+```
+
+Output
+
+```
+● nginx.service - A high performance web server and a reverse proxy server
+     Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)
+     Active: active (running) since Thu 2023-02-23 00:27:30 +01; 2h 13min ago
+       Docs: man:nginx(8)
+    Process: 1847676 ExecStartPre=/usr/sbin/nginx -t -q -g daemon on; master_process on; (code=exited, status=0/SUCCESS)
+    Process: 1847677 ExecStart=/usr/sbin/nginx -g daemon on; master_process on; (code=exited, status=0/SUCCESS)
+   Main PID: 1847678 (nginx)
+      Tasks: 5 (limit: 9373)
+     Memory: 5.2M
+        CPU: 1.012s
+     CGroup: /system.slice/nginx.service
+             ├─1847678 nginx: master process /usr/sbin/nginx -g daemon on; master_process on;
+             ├─1847679 nginx: worker process
+             ├─1847680 nginx: worker process
+             ├─1847681 nginx: worker process
+             └─1847682 nginx: worker process
+
+Feb 23 00:27:30 server systemd[1]: Starting A high performance web server and a reverse proxy server...
+Feb 23 00:27:30 server systemd[1]: Started A high performance web server and a reverse proxy server.
+```
+
+#### Nginx should now be serving your domain name. You can test this by navigating to http://your_domain.
+
+### Step 19 - Configure Router.
+
+Now all that's left is to configure your router to expose ports 80 and 443 to the public so that users outside your network can access your server from anywhere in the world.
+
+### Step 20 - Done.
+
+Well done! Provided you have completed all the preceding instructions I outlined in this documentation, you now possess a robust, industry-grade nginx reverse-proxy load-balancing server with optimal SSL integration.
