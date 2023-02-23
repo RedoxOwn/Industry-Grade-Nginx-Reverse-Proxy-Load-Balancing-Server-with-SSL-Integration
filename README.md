@@ -77,12 +77,12 @@ openssl req -new -key server.key -out server.csr
 ```
 Fill all the fields they ask you however you want, but pay attention the this particular field:
 ```
-ommon Name (e.g. server FQDN or YOUR name) []:
+Common Name (e.g. server FQDN or YOUR name) []:
 ```
 You have to put in it the hostname or domain that you want to activate the SSL certificate on.
 * Example:
 ```
-ommon Name (e.g. server FQDN or YOUR name) []: example.com
+Common Name (e.g. server FQDN or YOUR name) []: example.com
 ```
 
 ### Step 9 - Use this CSR(server.csr file) to obtain a valid certificate from a certificate authority(Example: NO-IP, Namecheap etc).
