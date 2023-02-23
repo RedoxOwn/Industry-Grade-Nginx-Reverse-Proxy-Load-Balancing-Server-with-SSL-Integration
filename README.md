@@ -79,7 +79,7 @@ Fill all the fields they ask you however you want, but pay attention the this pa
 ```
 Common Name (e.g. server FQDN or YOUR name) []:
 ```
-## You have to put in it the hostname or domain that you want to activate the SSL certificate on.
+#### You have to put in it the hostname or domain that you want to activate the SSL certificate on.
 * Example:
 ```
 Common Name (e.g. server FQDN or YOUR name) []: example.com
