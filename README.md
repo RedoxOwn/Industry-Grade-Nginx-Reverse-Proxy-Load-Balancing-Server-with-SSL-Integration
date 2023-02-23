@@ -87,7 +87,7 @@ Common Name (e.g. server FQDN or YOUR name) []: example.com
 
 ### Step 9 - Use this CSR(server.csr file) to obtain a valid certificate from a certificate authority(Example: NO-IP, Namecheap etc).
 ```
--> After you buy an SSL certificate from NO-IP, you then upload the CSR(server.csr file) to them and request a valid certificate.
+-> After you buy an SSL certificate from the certificate authority that you like, you then upload the CSR(server.csr file) to them and request a valid certificate.
 -> You will then wait for them to verify your request and then they will notify you par email. (Take about 30 minutes to 24 hours depending on the certificate authority)
 -> Once your Certificate is approved, you then go back their plathform and download the 'PEM Chain' file and the 'CRT Package' zip that contains individual root, intermediate, and end-entity certificate files.
 -> After you are done, you will have a .pem file and a zip usually containing three .crt files.
