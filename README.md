@@ -4,6 +4,8 @@ This documentation provides instructions on how to install and deploy an industr
 
 #### This method was tested in Debian 11.
 
+![alt text](https://raw.githubusercontent.com/RedoxOwn/Industry-Grade-Nginx-Reverse-Proxy-Load-Balancing-Server-with-SSL-Integration/main/benchmark.png)
+
 ### Step 1 – First, install nginx:
 
 ```
